@@ -13,6 +13,7 @@ int main(int argc, const char * argv[]) {
     int burstTime = 0;
     int arrivalTime = 0;
     int status;
+    char fileLine[MAX_ARRAY];
     
     finput = fopen(argv[1], "r");
     
@@ -23,17 +24,18 @@ int main(int argc, const char * argv[]) {
     
     printf("Reading file %s\n", argv[1]);
     
-    while (1){
-        status = fscanf(finput, "%d %d", &burstTime, &arrivalTime);
+    while (fgets(fileLine, MAX_CHAR, finput)){
+        if (fileLine = " \n"){
+            break;
+        }
+        sprintf(fileLine, MAX_CHAR, "%d %d\n", burstTime, arrivalTime);
         btArray[fileCount] = burstTime;
         atArray[fileCount] = arrivalTime;
         jobArray[fileCount][0] = fileCount;
         jobArray[fileCount][1] = burstTime;
         jobArray[fileCount][2] = arrivalTime;
         fileCount += 1;
-        if (feof(finput)){
-            break;
-        }
+        
     }
     
     fclose(finput);
